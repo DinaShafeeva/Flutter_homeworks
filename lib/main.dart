@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'chat_store.dart';
 import 'first_homework.dart';
+import 'second_homework.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+      providers: [
+        Provider<ChatStore>(create: (_) => ChatStore())
+      ],child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -95,6 +101,10 @@ class _MyHomePageState extends State<MyHomePage> {
     if (item == "first_homework") {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => FirstHomework()
+      ));
+    } else if (item == "second_homework") {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => SecondHomework()
       ));
     }
   }
