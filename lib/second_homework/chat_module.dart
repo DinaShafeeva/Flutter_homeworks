@@ -2,7 +2,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'chat_store.dart';
-import 'main.dart';
+import '../main.dart';
 
 class ChatModule extends Module {
   @override

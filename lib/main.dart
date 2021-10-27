@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'chat_store.dart';
-import 'first_homework.dart';
-import 'second_homework.dart';
+import 'second_homework/chat_store.dart';
+import 'first_homework/first_homework.dart';
+import 'second_homework/second_homework.dart';
 
 void main() {
   runApp(MultiProvider(

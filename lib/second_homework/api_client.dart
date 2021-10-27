@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:fl_homework/chat.dart';
+import 'package:fl_homework/second_homework/chat.dart';
 
 part 'api_client.g.dart';
 

@@ -38,6 +38,17 @@ mixin _$ChatStore on _ChatStore, Store {
   }
 
   @override
+  void sendMessage(String textMessage, {Function? onSend}) {
+    final _$actionInfo = _$_ChatStoreActionController.startAction(
+        name: '_ChatStore.sendMessage');
+    try {
+      return super.sendMessage(textMessage, onSend: onSend);
+    } finally {
+      _$_ChatStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 chat: ${chat}
