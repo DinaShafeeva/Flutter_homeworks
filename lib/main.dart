@@ -1,3 +1,4 @@
+import 'package:fl_homework/third_homework/third_homework.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -105,6 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
     } else if (item == "second_homework") {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => SecondHomework()
+      ));
+    } else if (item == "third_homework") {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ThirdHomework()
       ));
     }
   }
