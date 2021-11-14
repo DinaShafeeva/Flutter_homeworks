@@ -2,6 +2,7 @@
     package="com.example.fl_homework">
    <application
         android:label="fl_homework"
+        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
