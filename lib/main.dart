@@ -1,12 +1,24 @@
+import 'dart:io';
+
 import 'package:fl_homework/third_homework/third_homework.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'fourth_homework/insta_screen.dart';
+import 'fourth_homework/post.dart';
 import 'second_homework/chat_store.dart';
 import 'first_homework/first_homework.dart';
 import 'second_homework/second_homework.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Directory directory = await getApplicationDocumentsDirectory();
+  Hive.init(directory.path);
+  Hive.registerAdapter(PostAdapter());
+  await Hive.openBox<PostContainer>('post');
+
   runApp(MultiProvider(
       providers: [
         Provider<ChatStore>(create: (_) => ChatStore())
@@ -55,7 +67,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  List<String> items = ['first_homework', 'second_homework', 'third_homework'];
+  List<String> items = ['first_homework', 'second_homework', 'third_homework', 'fourth_homework'];
 
   void _incrementCounter() {
     setState(() {
@@ -110,6 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
     } else if (item == "third_homework") {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => ThirdHomework()
+      ));
+    } else if (item == "fourth_homework") {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => FourthHomework()
       ));
     }
   }
