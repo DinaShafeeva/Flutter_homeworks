@@ -61,7 +61,7 @@ class _PostWidgetState extends State<PostWidget> {
           children: <Widget>[
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: ImageIcon(AssetImage("resources/icons/like_red.png"),
+              child: ImageIcon(AssetImage("resources/icons/like.png"),
                   size: 24),
             ),
             IconButton(
