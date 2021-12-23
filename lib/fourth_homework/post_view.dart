@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fl_homework/fourth_homework/post.dart';
 import 'package:flutter/material.dart';
 
@@ -47,22 +49,19 @@ class _PostWidgetState extends State<PostWidget> {
             ],
           ),
         ),
-        Container(
-          width: 400,
-          height: 400,
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              image: DecorationImage(
-                  image: AssetImage(widget.post.mediaList[0]),
-                  fit: BoxFit.cover)),
+        GestureDetector(
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[_getMedia(widget.post)],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: ImageIcon(AssetImage("resources/icons/like.png"),
-                  size: 24),
+              child:
+                  ImageIcon(AssetImage("resources/icons/like.png"), size: 24),
             ),
             IconButton(
               padding: EdgeInsets.zero,
@@ -124,5 +123,28 @@ class _PostWidgetState extends State<PostWidget> {
         ),
       ],
     );
+  }
+
+  Widget _getMedia(Post post) {
+    if (widget.post.mediaList.length > 1) {
+      return Container(
+        width: 400,
+        height: 400,
+        decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            image: DecorationImage(
+                image: AssetImage(widget.post.mediaList[0]),
+                fit: BoxFit.cover)),
+      );
+    } else
+      return Container(
+        width: 400,
+        height: 400,
+        decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            image: DecorationImage(
+                image: FileImage(File(widget.post.mediaList[0])),
+                fit: BoxFit.cover)),
+      );
   }
 }

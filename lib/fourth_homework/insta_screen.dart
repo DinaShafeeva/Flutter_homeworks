@@ -1,3 +1,4 @@
+import 'package:fl_homework/fourth_homework/add_post_screen.dart';
 import 'package:fl_homework/fourth_homework/post.dart';
 import 'package:fl_homework/fourth_homework/post_view.dart';
 import 'package:fl_homework/fourth_homework/store.dart';
@@ -25,9 +26,15 @@ class _FourthHomeworkState extends State<FourthHomework> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title), actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.add),
+          onPressed: () {
+            _addPost();
+          },
+        ),
+      ] // ),
+          ),
       body: Observer(
         builder: (context) => ListView.builder(
           itemBuilder: (ctx, i) {
@@ -37,5 +44,10 @@ class _FourthHomeworkState extends State<FourthHomework> {
         ),
       ),
     );
+  }
+
+  void _addPost() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => AddPostScreen(postsStore: postsStore,)));
   }
 }
